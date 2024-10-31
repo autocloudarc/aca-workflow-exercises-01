@@ -1,0 +1,21 @@
+name: 01-level-workflow
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "🎉 The job was triggered by event: ${{ github.event_name }}"
+        echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ."
+    
+    - uses: actions/checkout@v4
+    
+    - name: list-contents-with-echo
+      run: |
+        echo "The repository ${{ github.repository }} contains the following files:"
+        tree
